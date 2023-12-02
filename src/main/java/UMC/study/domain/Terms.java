@@ -1,6 +1,7 @@
 package UMC.study.domain;
 
 import UMC.study.domain.common.BaseEntity;
+import UMC.study.domain.mapping.MemberAgree;
 import jakarta.persistence.*;
 import lombok.*;
 

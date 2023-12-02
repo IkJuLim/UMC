@@ -1,18 +1,25 @@
 package UMC.study.domain;
 
-import UMC.study.domain.common.BaseEntity;
 import UMC.study.domain.enums.Gender;
 import UMC.study.domain.enums.MemberStatus;
 import UMC.study.domain.enums.SocialType;
-import jakarta.persistence.*;
+import UMC.study.domain.mapping.MemberAgree;
+import UMC.study.domain.mapping.MemberMission;
+import UMC.study.domain.mapping.MemberPrefer;
 import lombok.*;
-
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import UMC.study.domain.common.BaseEntity;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
+@DynamicUpdate
+@DynamicInsert
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -44,9 +51,10 @@ public class Member extends BaseEntity {
 
     private LocalDate inactiveDate;
 
-    @Column(nullable = false, length = 50)
+    //    @Column(nullable = false, length = 50)
     private String email;
 
+    @ColumnDefault("0")
     private Integer point;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)

@@ -1,8 +1,9 @@
 package UMC.study.domain;
 
-import UMC.study.domain.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import UMC.study.domain.common.BaseEntity;
+import UMC.study.domain.mapping.MemberMission;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

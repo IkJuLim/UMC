@@ -1,10 +1,10 @@
 package UMC.study.apiPayload.code.status;
 
-import UMC.study.apiPayload.code.BaseCode;
-import UMC.study.apiPayload.code.ReasonDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
+import UMC.study.apiPayload.code.BaseCode;
+import UMC.study.apiPayload.code.ReasonDTO;
 
 @Getter
 @AllArgsConstructor
@@ -37,6 +37,7 @@ public enum SuccessStatus implements BaseCode {
                 .code(code)
                 .isSuccess(true)
                 .httpStatus(httpStatus)
-                .build();
+                .build()
+                ;
     }
 }

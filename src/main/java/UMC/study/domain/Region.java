@@ -1,8 +1,8 @@
 package UMC.study.domain;
 
-import jakarta.persistence.*;
 import lombok.*;
-
+import UMC.study.domain.common.BaseEntity;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Region {
+public class Region extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +20,5 @@ public class Region {
     private String name;
 
     @OneToMany(mappedBy = "region", cascade = CascadeType.ALL)
-    private List<Store> stores = new ArrayList<>();
-
+    private List<Store> storeList = new ArrayList<>();
 }
