@@ -2,7 +2,7 @@ package UMC.study.validation.validator;
 
 import UMC.study.apiPayload.code.status.ErrorStatus;
 import UMC.study.domain.Member;
-import UMC.study.service.MemberService.MemberQueryService;
+import UMC.study.service.memberService.MemberQueryService;
 import UMC.study.validation.annotation.ExistMember;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

@@ -1,4 +1,4 @@
-package UMC.study.service.TempService;
+package UMC.study.service.tempService;
 
 import UMC.study.apiPayload.code.status.ErrorStatus;
 import UMC.study.apiPayload.exception.handler.TempHandler;

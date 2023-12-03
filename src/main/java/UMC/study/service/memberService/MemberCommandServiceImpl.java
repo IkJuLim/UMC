@@ -1,14 +1,19 @@
-package UMC.study.service.MemberService;
+package UMC.study.service.memberService;
 
 import UMC.study.apiPayload.code.status.ErrorStatus;
 import UMC.study.apiPayload.exception.handler.FoodCategoryHandler;
+import UMC.study.apiPayload.exception.handler.MemberHandler;
+import UMC.study.apiPayload.exception.handler.MissionHandler;
 import UMC.study.converter.MemberConverter;
 import UMC.study.converter.MemberPreferConverter;
 import UMC.study.domain.FoodCategory;
 import UMC.study.domain.Member;
+import UMC.study.domain.Mission;
+import UMC.study.domain.mapping.MemberMission;
 import UMC.study.domain.mapping.MemberPrefer;
 import UMC.study.repository.FoodCategoryRepository;
 import UMC.study.repository.MemberRepository;
+import UMC.study.repository.MissionRepository;
 import UMC.study.web.dto.MemberRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,6 +31,8 @@ public class MemberCommandServiceImpl implements MemberCommandService{
 
     private final FoodCategoryRepository foodCategoryRepository;
 
+    private final MissionRepository missionRepository;
+
     @Override
     @Transactional
     public Member joinMember(MemberRequestDTO.JoinDto request) {
@@ -33,7 +40,9 @@ public class MemberCommandServiceImpl implements MemberCommandService{
         Member newMember = MemberConverter.toMember(request);
         List<FoodCategory> foodCategoryList = request.getPreferCategory().stream()
                 .map(category -> {
-                    return foodCategoryRepository.findById(category).orElseThrow(() -> new FoodCategoryHandler(ErrorStatus.FOOD_CATEGORY_NOT_FOUND));
+                    return foodCategoryRepository.findById(category).orElseThrow(() ->
+                            new FoodCategoryHandler(ErrorStatus.FOOD_CATEGORY_NOT_FOUND)
+                    );
                 }).collect(Collectors.toList());
 
         List<MemberPrefer> memberPreferList = MemberPreferConverter.toMemberPreferList(foodCategoryList);
@@ -41,5 +50,25 @@ public class MemberCommandServiceImpl implements MemberCommandService{
         memberPreferList.forEach(memberPrefer -> {memberPrefer.setMember(newMember);});
 
         return memberRepository.save(newMember);
+    }
+
+
+    @Override
+    @Transactional
+    public Member createMemberMission(Long missionId, Long memberId) {
+        Member member = memberRepository.findById(memberId).orElseThrow(() ->
+                new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND)
+        );
+
+        Mission mission = missionRepository.findById(missionId).orElseThrow(() ->
+                new MissionHandler(ErrorStatus.MISSION_NOT_FOUND)
+        );
+
+        MemberMission.builder()
+                .mission(mission)
+                .member(member)
+                .build();
+
+        return member;
     }
 }

@@ -26,6 +26,7 @@ public class Mission extends BaseEntity {
 
     private String missionSpec;
 
+    @Setter
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
     private Store store;

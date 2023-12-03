@@ -3,7 +3,7 @@ package UMC.study.web.controller;
 import UMC.study.apiPayload.ApiResponse;
 import UMC.study.converter.MemberConverter;
 import UMC.study.domain.Member;
-import UMC.study.service.MemberService.MemberCommandService;
+import UMC.study.service.memberService.MemberCommandService;
 import UMC.study.web.dto.MemberRequestDTO;
 import UMC.study.web.dto.MemberResponseDTO;
 import jakarta.validation.Valid;
