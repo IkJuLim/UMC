@@ -10,4 +10,5 @@ public interface MemberQueryService {
 
     Optional<Member> findMember(Long id);
 
+    Page<Review> getReviewList(Long memberId, Integer page);
 }

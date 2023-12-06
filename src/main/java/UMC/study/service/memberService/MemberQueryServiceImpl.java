@@ -24,4 +24,12 @@ public class MemberQueryServiceImpl implements MemberQueryService{
     public Optional<Member> findMember(Long id) {
         return memberRepository.findById(id);
     }
+
+    @Override
+    public Page<Review> getReviewList(Long memberId, Integer page){
+        Member member = memberRepository.findById(memberId).get();
+
+        Page<Review> memberPage = reviewRepository.findAllByMember(member, PageRequest.of(page, 10));
+        return memberPage;
+    }
 }
