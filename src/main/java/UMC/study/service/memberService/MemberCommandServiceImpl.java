@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -71,5 +72,16 @@ public class MemberCommandServiceImpl implements MemberCommandService{
                 .build();
 
         return member;
+    }
+
+    @Override
+    @Transactional
+    public Mission completeMission(Long memberId, Long missionId){
+        Member member = memberRepository.findById(memberId).get();
+        Mission mission = missionRepository.findById(missionId).get();
+        MemberMission memberMission = member.getMemberMissionList().stream()
+                .filter(mm -> mm.getMission().equals(mission)).findFirst().get();
+        memberMission.missionComplete();
+        return mission;
     }
 }
