@@ -1,5 +1,6 @@
 package UMC.study.web.dto;
 
+import UMC.study.domain.enums.MissionStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -41,6 +42,32 @@ public class MemberResponseDTO {
         String ownerNickname;
         Float score;
         String body;
+        LocalDate createdAt;
+    }
+
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MissionListDTO{
+        List<MemberResponseDTO.MissionDTO> missionList;
+        Integer listSize;
+        Integer totalPage;
+        Long totalElements;
+        Boolean isFirst;
+        Boolean isLast;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MissionDTO{
+        Integer reward;
+        LocalDate deadline;
+        String missionSpec;
+        MissionStatus missionStatus;
         LocalDate createdAt;
     }
 }

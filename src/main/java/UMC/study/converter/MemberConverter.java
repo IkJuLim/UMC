@@ -1,13 +1,16 @@
 package UMC.study.converter;
 
 import UMC.study.domain.Member;
+import UMC.study.domain.Mission;
 import UMC.study.domain.Review;
 import UMC.study.domain.enums.Gender;
+import UMC.study.domain.enums.MissionStatus;
 import UMC.study.web.dto.MemberRequestDTO;
 import UMC.study.web.dto.MemberResponseDTO;
 import UMC.study.web.dto.StoreResponseDTO;
 import org.springframework.data.domain.Page;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +72,32 @@ public class MemberConverter {
                 .totalElements(reviewList.getTotalElements())
                 .listSize(reviewPreViewDTOList.size())
                 .reviewList(reviewPreViewDTOList)
+                .build();
+    }
+
+
+    public static MemberResponseDTO.MissionDTO missionDTO(Mission mission){
+        return MemberResponseDTO.MissionDTO.builder()
+                .reward(mission.getReward())
+                .deadline(mission.getDeadline())
+                .missionSpec(mission.getMissionSpec())
+                .createdAt(mission.getCreatedAt().toLocalDate())
+                .build();
+    }
+
+    public static MemberResponseDTO.MissionListDTO missionListDTO(Page<Mission> missionList) {
+
+        List<MemberResponseDTO.MissionDTO> missionDTOList = missionList.stream()
+                .map(MemberConverter::missionDTO)
+                .collect(Collectors.toList());
+
+        return MemberResponseDTO.MissionListDTO.builder()
+                .isLast(missionList.isLast())
+                .isFirst(missionList.isFirst())
+                .totalPage(missionList.getTotalPages())
+                .totalElements(missionList.getTotalElements())
+                .listSize(missionDTOList.size())
+                .missionList(missionDTOList)
                 .build();
     }
 }
