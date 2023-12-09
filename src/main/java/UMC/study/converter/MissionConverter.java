@@ -1,7 +1,5 @@
 package UMC.study.converter;
 
-import UMC.study.domain.Member;
-import UMC.study.domain.Mission;
 import UMC.study.web.dto.MissionResponseDTO;
 
 public class MissionConverter {

@@ -2,9 +2,7 @@ package UMC.study.validation.validator;
 
 import UMC.study.apiPayload.code.status.ErrorStatus;
 import UMC.study.domain.Mission;
-import UMC.study.domain.Store;
 import UMC.study.service.missionService.MissionQueryService;
-import UMC.study.service.storeService.StoreQueryService;
 import UMC.study.validation.annotation.NotChallengingMission;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

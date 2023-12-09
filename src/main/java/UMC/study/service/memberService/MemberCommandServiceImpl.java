@@ -12,16 +12,12 @@ import UMC.study.domain.mapping.MemberPrefer;
 import UMC.study.repository.FoodCategoryRepository;
 import UMC.study.repository.MemberRepository;
 import UMC.study.repository.MissionRepository;
-import UMC.study.repository.ReviewRepository;
 import UMC.study.web.dto.MemberRequestDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -77,11 +73,8 @@ public class MemberCommandServiceImpl implements MemberCommandService{
     @Override
     @Transactional
     public Mission completeMission(Long memberId, Long missionId){
-        Member member = memberRepository.findById(memberId).get();
-        Mission mission = missionRepository.findById(missionId).get();
-        MemberMission memberMission = member.getMemberMissionList().stream()
-                .filter(mm -> mm.getMission().equals(mission)).findFirst().get();
+        MemberMission memberMission = memberRepository.findMemberMission(memberId, missionId).get();
         memberMission.missionComplete();
-        return mission;
+        return memberMission.getMission();
     }
 }

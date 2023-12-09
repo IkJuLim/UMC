@@ -1,7 +1,6 @@
 package UMC.study.validation.validator;
 
 import UMC.study.apiPayload.code.status.ErrorStatus;
-import UMC.study.domain.Member;
 import UMC.study.domain.Mission;
 import UMC.study.service.missionService.MissionQueryService;
 import UMC.study.validation.annotation.ExistMission;

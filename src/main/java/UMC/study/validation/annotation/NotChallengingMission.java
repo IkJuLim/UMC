@@ -1,7 +1,6 @@
 package UMC.study.validation.annotation;
 
 import UMC.study.validation.validator.NotChallengingMissionValidator;
-import UMC.study.validation.validator.StoreExistValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 

@@ -5,7 +5,6 @@ import UMC.study.converter.StoreConverter;
 import UMC.study.domain.Mission;
 import UMC.study.domain.Review;
 import UMC.study.domain.Store;
-import UMC.study.service.memberService.MemberCommandService;
 import UMC.study.service.storeService.StoreCommandService;
 import UMC.study.service.storeService.StoreQueryService;
 import UMC.study.validation.annotation.ExistMember;

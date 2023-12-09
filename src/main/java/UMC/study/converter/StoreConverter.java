@@ -5,10 +5,8 @@ import UMC.study.domain.Review;
 import UMC.study.domain.Store;
 import UMC.study.web.dto.StoreRequestDTO;
 import UMC.study.web.dto.StoreResponseDTO;
-import jakarta.validation.constraints.NotBlank;
 import org.springframework.data.domain.Page;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;

@@ -4,13 +4,10 @@ import UMC.study.domain.Member;
 import UMC.study.domain.Mission;
 import UMC.study.domain.Review;
 import UMC.study.domain.enums.Gender;
-import UMC.study.domain.enums.MissionStatus;
 import UMC.study.web.dto.MemberRequestDTO;
 import UMC.study.web.dto.MemberResponseDTO;
-import UMC.study.web.dto.StoreResponseDTO;
 import org.springframework.data.domain.Page;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
